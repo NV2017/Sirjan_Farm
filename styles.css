@@ -19,7 +19,7 @@
     min-height: 100vh;
 }
 
-video {
+#bgvideoplayer > video {
     object-fit: cover;
     position: absolute;
     top: 0;
@@ -27,4 +27,12 @@ video {
     height: 100%;
     min-width: 100%;
     z-index: -10000;
+}
+
+.Main_PG {
+    width: 80%;
+    border: 1px;
+    border-style: dashed;
+    backdrop-filter: sepia(50%);
+    background: rgba(255, 255, 255, 0.3);
 }
