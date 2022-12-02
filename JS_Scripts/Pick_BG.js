@@ -23,5 +23,4 @@ picPathPoster = picPathPosters[randomPick-1];
 window.onload = function() {
     let background_image_dynamics_id = document.getElementById("background_image_dynamics");
     background_image_dynamics_id.src = picPathWebm;
-    console.log(background_image_dynamics_id);
-  }
+}

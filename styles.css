@@ -1,5 +1,6 @@
 :root {
     --Nav_Bar_BG: #000000;
+    --Div_BG: hsla(150, 25%, 75%, 0.6);
 }
 
 * {
@@ -34,5 +35,5 @@
     border: 1px;
     border-style: dashed;
     backdrop-filter: sepia(50%);
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--Div_BG,red);
 }
