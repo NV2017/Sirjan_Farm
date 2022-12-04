@@ -1,6 +1,15 @@
+/* Global Variables */
+
 :root {
     --Nav_Bar_BG: #000000;
     --Div_BG: hsla(150, 25%, 75%, 0.6);
+    --SmallestRem: 0.1rem;
+    --SmallRem: 1rem;
+    --MediumRem: 2rem;
+    --LargeRem: 4rem;
+    --LargestRem: 6rem;
+    --MainFontColor: black;
+    --SubMainFontColor: dimgray;
 }
 
 * {
@@ -10,13 +19,18 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* End of 'Global Variables' */
+
+/* Background Variables */
+
 .BG_wrapper {
     position: relative;
     overflow: hidden;
     text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     min-height: 100vh;
 }
 
@@ -30,6 +44,54 @@
     z-index: -10000;
 }
 
+/* End of 'Background Variables' */
+
+/* Primary Header */
+
+#navBarTopLeftLogo {
+    width: auto;
+    height: var(--LargeRem);
+    /* margin: var(--SmallestRem); */
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    gap: var(--gap,var(--SmallRem));
+}
+
+.primary-header {
+    /* display: flex; */
+    /* flex-direction: row; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.primary-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.primary-navigation a {
+    text-decoration: none;
+    color: var(--MainFontColor);
+    font-size: var(--MediumRem);
+}
+
+.primary-navigation a > [aria-hidden="true"] {
+    font-weight: 700;
+    color: var(--SubMainFontColor);
+    margin-inline-end: var(--SmallRem);
+    margin-inline-start: var(--MediumRem);
+}
+
+/* End of 'Primary Header' */
+
+/* Main */
+
 .Main_PG {
     width: 80%;
     border: 1px;
@@ -37,3 +99,13 @@
     backdrop-filter: sepia(50%);
     background: var(--Div_BG,red);
 }
+
+/* End of 'Main' */
+
+/* Media Query */
+
+@media (min-width: 35rem) {
+    
+}
+
+/* End of 'Media Query' */
