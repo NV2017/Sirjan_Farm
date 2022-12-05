@@ -2,14 +2,27 @@
 
 :root {
     --Nav_Bar_BG: #000000;
-    --Div_BG: hsla(150, 25%, 75%, 0.6);
+    --Div_BG: hsla(150, 25%, 75%, 0.1);
+
     --SmallestRem: 0.1rem;
-    --SmallRem: 1rem;
-    --MediumRem: 2rem;
-    --LargeRem: 4rem;
-    --LargestRem: 6rem;
+    --SmallRem: 2rem;
+    --MediumRem: 5rem;
+    --LargeRem: 10rem;
+    --LargerRem: 20rem;
+    --LargestRem: 30rem;
+
+    --SmallestVh: 0.1vh;
+    --SmallerVh: 0.1vh;
+    --SmallVh: 2vh;
+    --MediumVh: 5vh;
+    --LargeVh: 10vh;
+    --LargerVh: 20vh;
+    --LargestVh: 30vh;
+
     --MainFontColor: black;
     --SubMainFontColor: dimgray;
+
+    --BgColor1: hsl(0 0% 100% / 0.5);
 }
 
 * {
@@ -17,6 +30,13 @@
     padding: 0%;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+@supports (backdrop-filter: blur(var(--SmallerRem))) {
+    .primary-navigation {
+        background: var(--BgColor1);
+        backdrop-filter: blur(var(--SmallerRem));
+    }
 }
 
 /* End of 'Global Variables' */
@@ -73,20 +93,28 @@
     list-style: none;
     padding: 0;
     margin: 0;
+
+    background: var(--BgColor1);
 }
 
 .primary-navigation a {
     text-decoration: none;
     color: var(--MainFontColor);
-    font-size: var(--MediumRem);
+    font-size: var(--SmallRem);
+    padding-right: var(--SmallRem);
 }
 
 .primary-navigation a > [aria-hidden="true"] {
     font-weight: 700;
     color: var(--SubMainFontColor);
-    margin-inline-end: var(--SmallRem);
-    margin-inline-start: var(--MediumRem);
+    margin-inline-end: var(--SmallerRem);
+    margin-inline-start: var(--SmallRem);
 }
+
+.mobile-nav-toggle {
+    width: 0%;
+    border: none;
+}    
 
 /* End of 'Primary Header' */
 
@@ -104,8 +132,29 @@
 
 /* Media Query */
 
-@media (min-width: 35rem) {
-    
+/* For Phone Screen */
+@media (max-width: 35rem) {
+    .primary-navigation {
+        position: fixed;
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: max(var(--LargestVh),var(--SmallRem)) var(--SmallRem);
+        --gap: var(--SmallRem);
+        z-index: 1000;
+    }
+
+    .mobile-nav-toggle {
+        position: absolute;
+        background: url("Pics/Nav/HamburgerIcon.svg");
+        width: var(--SmallRem);
+        aspect-ratio: 1;
+        top: var(--SmallRem);
+        right: var(--SmallRem);
+        z-index: 9999;
+        box-shadow: 0 0 var(--SmallestRem) var(--SmallestRem) var(--SubMainFontColor);
+    }
 }
 
 /* End of 'Media Query' */
