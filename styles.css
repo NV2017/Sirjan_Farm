@@ -110,6 +110,8 @@ body {
     color: var(--MainFontColor);
     font-size: var(--SmallRem);
     padding-right: var(--SmallRem);
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .primary-navigation a > [aria-hidden="true"] {
@@ -117,7 +119,7 @@ body {
     color: var(--SubMainFontColor);
     margin-inline-end: var(--SmallerRem);
     margin-inline-start: var(--SmallRem);
-    padding-right: var(--SmallerRem);
+    padding-right: var(--SmallRem);
 }
 
 .mobile-nav-toggle {
@@ -213,7 +215,7 @@ body {
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-        padding: max(var(--LargestVh),var(--SmallRem)) var(--SmallRem);
+        padding: max(var(--LargestVh),var(--SmallRem)) var(--MediumRem);
         --gap: var(--SmallRem);
         z-index: 1000;
 

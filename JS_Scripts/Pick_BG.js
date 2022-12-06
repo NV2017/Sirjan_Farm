@@ -1,6 +1,8 @@
 let loc = window.location.pathname;
 let effectDir = loc.substring(0, loc.lastIndexOf('/'))+"/Pics/BG_Effects";
+effectDir = effectDir.replace("Pages/","");
 let picDir = loc.substring(0, loc.lastIndexOf('/'))+"/Pics/BG_Stills";
+picDir = picDir.replace("Pages/","");
 let numLimit = 5;
 let picPathsWebm = [];
 let picPathsMp4 = [];
