@@ -2,7 +2,7 @@
 
 :root {
     --Nav_Bar_BG: #000000;
-    --Div_BG: hsla(150, 25%, 75%, 0.1);
+    --Div_BG: hsla(0, 0%, 100%, 0.8);
 
     --SmallestRem: 0.1rem;
     --SmallRem: 2rem;
@@ -19,10 +19,18 @@
     --LargerVh: 20vh;
     --LargestVh: 30vh;
 
-    --MainFontColor: black;
-    --SubMainFontColor: dimgray;
+    --SmallestVw: 0.1vW;
+    --SmallerVw: 0.1vw;
+    --SmallVw: 2vw;
+    --MediumVw: 5vW;
+    --LargeVw: 10vw;
+    --LargerVw: 20vw;
+    --LargestVw: 30vw;
 
-    --BgColor1: hsl(0 0% 100% / 0.5);
+    --MainFontColor: black;
+    --SubMainFontColor: rgb(156, 156, 156);
+
+    --BgColor1: hsl(0 0% 100% / 0.8);
 }
 
 * {
@@ -30,6 +38,10 @@
     padding: 0%;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 @supports (backdrop-filter: blur(var(--SmallerRem))) {
@@ -71,7 +83,6 @@
 #navBarTopLeftLogo {
     width: auto;
     height: var(--LargeRem);
-    /* margin: var(--SmallestRem); */
 }
 
 .flex {
@@ -83,8 +94,6 @@
 }
 
 .primary-header {
-    /* display: flex; */
-    /* flex-direction: row; */
     justify-content: space-between;
     align-items: center;
 }
@@ -93,7 +102,6 @@
     list-style: none;
     padding: 0;
     margin: 0;
-
     background: var(--BgColor1);
 }
 
@@ -109,12 +117,13 @@
     color: var(--SubMainFontColor);
     margin-inline-end: var(--SmallerRem);
     margin-inline-start: var(--SmallRem);
+    padding-right: var(--SmallerRem);
 }
 
 .mobile-nav-toggle {
     width: 0%;
     border: none;
-}    
+}
 
 /* End of 'Primary Header' */
 
@@ -122,18 +131,82 @@
 
 .Main_PG {
     width: 80%;
-    border: 1px;
-    border-style: dashed;
+    border: var(--SmallestRem);
+    border-style: inset;
+    border-width: var(--SmallerRem);
+    border-color: var(--SubMainFontColor);
+    border-radius: var(--SmallRem);
     backdrop-filter: sepia(50%);
-    background: var(--Div_BG,red);
+    background: var(--Div_BG,green);
 }
 
 /* End of 'Main' */
 
+/* Footer */
+
+.bottomFooter{
+    color: var(--MainFontColor);
+    background-color: var(--BgColor1);
+    padding: var(--SmallerRem);
+    bottom: 0;
+    width: 100%;
+    font-size: var(--SmallerRem);
+    align-items: center;
+    justify-content: center;
+}
+
+.bottomFooter a:link {
+    color: var(--SubMainFontColor);
+}
+
+/* visited link */
+.bottomFooter a:visited {
+    color: var(--Nav_Bar_BG);
+}
+
+/* mouse over link */
+.bottomFooter a:hover {
+    color: var(--MainFontColor);
+}
+
+  /* selected link */
+.bottomFooter a:active {
+    color: var(--BgColor1);
+}
+
+/* End of 'Footer' */
+
 /* Media Query */
 
+/* For Large Screen */
+
+@media (min-width: 85rem) {
+    .primary-navigation {
+        border-radius: var(--SmallRem) 0 0 var(--SmallRem);
+        padding-block: var(--SmallVh);
+        padding-inline: clamp(var(--SmallRem), var(--LargeVw), var(--MediumRem));
+    }
+}
+
+/* For Tab Screen */
+
+@media (min-width: 50rem) and (max-width: 85rem) {
+    .primary-navigation a > span[aria-hidden]{
+        display: none;
+    }
+
+    .primary-navigation a {
+        padding-right: var(--SmallerRem);
+    }
+
+    .primary-navigation {
+        padding: var(--SmallVh);
+        border-radius: var(--SmallRem) 0 0 var(--SmallRem);
+    }
+}
+
 /* For Phone Screen */
-@media (max-width: 35rem) {
+@media (max-width: 50rem) {
     .primary-navigation {
         position: fixed;
         inset: 0 0 0 30%;
@@ -143,18 +216,36 @@
         padding: max(var(--LargestVh),var(--SmallRem)) var(--SmallRem);
         --gap: var(--SmallRem);
         z-index: 1000;
+
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+    }
+
+    .primary-navigation[data-visible="true"] {
+        transform: translateX(0%);
     }
 
     .mobile-nav-toggle {
         position: absolute;
         background: url("Pics/Nav/HamburgerIcon.svg");
-        width: var(--SmallRem);
+        width: auto;
+        height: var(--SmallRem);
+        background-size: var(--SmallRem);
         aspect-ratio: 1;
         top: var(--SmallRem);
         right: var(--SmallRem);
         z-index: 9999;
-        box-shadow: 0 0 var(--SmallestRem) var(--SmallestRem) var(--SubMainFontColor);
+        /* box-shadow: 0 0 var(--SmallestRem) var(--SmallestRem) var(--SubMainFontColor); */
+    }
+
+    .mobile-nav-toggle[aria-expanded="true"] {
+        background: url("Pics/Nav/CloseIcon.svg");
+        width: auto;
+        height: var(--SmallRem);
+        background-size: var(--SmallRem);
+        aspect-ratio: 1;
     }
 }
 
 /* End of 'Media Query' */
+
